@@ -1,0 +1,2 @@
+10POO	/disciplinas/gab.txt	corretorDeNotas\src\disciplinas\POO\1
+1	POO	/disciplinas/gab.txt	corretorDeNotas\src\disciplinas\POO\1
