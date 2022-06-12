@@ -1,0 +1,4 @@
+1	POO		src/disciplinas/POO/1
+2	POO		src/disciplinas/POO/2
+1	ICC		src/disciplinas/ICC/1
+1	AL		src/disciplinas/AL/1
