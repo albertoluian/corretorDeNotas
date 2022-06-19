@@ -51,9 +51,7 @@ public class Disciplina {
         }
 
     }
-
-    public void inserirNotas(int quantidade) {
-        Scanner sc = new Scanner(System.in);
+    public void inserirNotas(int quantidade, Scanner sc) {
         FileWriter out = null;
         BufferedWriter bw = null;
         try {
@@ -81,7 +79,6 @@ public class Disciplina {
                     // System.out.println(a + "         a");
                     if(a != '\n')
                     {
-                        System.out.println(a);
                         bw.write(a);
                         tamanho++;
                     }
@@ -95,7 +92,6 @@ public class Disciplina {
 
             }
         }
-        sc.close();
 
         try {
             bw.close();
@@ -113,6 +109,41 @@ public class Disciplina {
         try
         {
             fr = new FileReader(caminhoDiretorio + "/alfabetica.txt");
+            br = new BufferedReader(fr);
+            String linha = br.readLine();
+
+            notas = "";
+
+            while(linha != null && linha.strip() != "")
+            {   
+                notas += linha + '\n';
+                linha = br.readLine();
+            }
+            
+        } catch (Exception e) { 
+            e.printStackTrace();
+        }
+        
+        try
+        {
+            br.close();
+            fr.close();
+        }
+        catch(Exception e)
+        { e.printStackTrace();}
+
+        return notas;
+    }
+    public String mostrarNotasDec()
+    {
+        FileReader fr = null;
+        BufferedReader br = null; 
+
+        String notas = null;
+
+        try
+        {
+            fr = new FileReader(caminhoDiretorio + "/decrescente.txt");
             br = new BufferedReader(fr);
             String linha = br.readLine();
 
@@ -215,7 +246,18 @@ public class Disciplina {
             }
 
             bw.write("" + media);
+            Collections.sort(notas, new Comparador());
+            bw.close();
+            fw.close();
+            fw = new FileWriter(caminhoDiretorio + "/decrescente.txt");
+            bw = new BufferedWriter(fw);
+            for(String nota: notas)
+            {
+                bw.write(nota);
+                bw.newLine();
+            }
 
+            bw.write("" + media);
             bw.close();
             fw.close();
             
@@ -246,6 +288,7 @@ public class Disciplina {
                 }
                 catch(Exception e)
                 {
+                    e.printStackTrace();
                     System.out.println("Numero de operacao invalido");
                 }
             }
@@ -262,7 +305,7 @@ public class Disciplina {
                         try
                         {
                             int nAlunos = Integer.parseInt(sc.next().strip());
-                            inserirNotas(nAlunos);
+                            inserirNotas(nAlunos, sc);
                             break;
                         }
                         catch(Exception e)
@@ -280,6 +323,7 @@ public class Disciplina {
                     System.out.println( mostrarNotasAlf());
                     break;
                 case 4: // Mostrar por ordem das notas
+                    System.out.println( mostrarNotasDec());
                     break;
             }
         }

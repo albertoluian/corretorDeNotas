@@ -1,14 +1,14 @@
+luian9	7
 janaina	6
-luian	3
-luian	4
+luian8	6
 luian2	5
+ph	5
+rhavy2	5
+luian	4
 luian3	4
 luian5	4
 luian7	4
-luian8	6
-luian9	7
-ph	5
-rhavy	0
-rhavy2	5
+luian	3
 rhavy3	3
+rhavy	0
 4.3076923076923075
